@@ -1,3 +1,4 @@
+import java.util.*;
 class Solution {
     public int trapRainWater(int[][] heightMap) {
         int m = heightMap.length;
