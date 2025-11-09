@@ -1,4 +1,4 @@
-import java.util.*;
+
 class Solution {
     public int smallestNumber(int n) {
         int ans=0;
