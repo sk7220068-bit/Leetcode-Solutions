@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 class Solution {
     public List<Boolean> prefixesDivBy5(int[] nums) {
         List<Boolean> ans = new ArrayList<>();
