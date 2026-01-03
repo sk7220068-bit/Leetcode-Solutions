@@ -1,0 +1,13 @@
+class Solution {
+    public int numOfWays(int n) {
+        long MOD = 1_000_000_007;
+        long A = 6, B = 6;
+
+        while (--n > 0) {
+            long a = (2*A + 2*B) % MOD;
+            B = (2*A + 3*B) % MOD;
+            A = a;
+        }
+        return (int)((A + B) % MOD);
+    }
+}
