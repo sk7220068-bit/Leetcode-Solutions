@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    public int maximizeSquareHoleArea(int n, int m, int[] hBars, int[] vBars) {
+        Arrays.sort(hBars);
+        Arrays.sort(vBars);
+
+        int hMax = 1, curr = 1;
+        for (int i = 1; i < hBars.length; i++) {
+            if (hBars[i] == hBars[i - 1] + 1) {
+                curr++;
+            } else {
+                curr = 1;
+            }
+            hMax = Math.max(hMax, curr);
+        }
+
+        int vMax = 1;
+        curr = 1;
+        for (int i = 1; i < vBars.length; i++) {
+            if (vBars[i] == vBars[i - 1] + 1) {
+                curr++;
+            } else {
+                curr = 1;
+            }
+            vMax = Math.max(vMax, curr);
+        }
+
+        int side = Math.min(hMax, vMax);
+        return (side + 1) * (side + 1);
+    }
+}
