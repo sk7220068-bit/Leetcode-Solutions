@@ -1,0 +1,21 @@
+class Solution {
+    public int countBinarySubstrings(String s) {
+        int answer = 0;
+        int previousGroup = 0;
+        int currentGroup = 1;
+
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                currentGroup++;
+            } else {
+                previousGroup = currentGroup;
+                currentGroup = 1;
+            }
+
+            if (currentGroup <= previousGroup) {
+                answer++;
+            }
+        }
+        return answer;
+    }
+}
