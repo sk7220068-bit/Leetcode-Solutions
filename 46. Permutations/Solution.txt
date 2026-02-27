@@ -1,0 +1,31 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> output = new ArrayList<>();
+        boolean[] visited = new boolean[nums.length];
+        generate(nums, new ArrayList<>(), visited, output);
+        return output;
+    }
+
+    private void generate(int[] nums, List<Integer> path,
+                                boolean[] visited, List<List<Integer>> output) {
+        // base case
+        if (path.size() == nums.length) {
+            output.add(new ArrayList<>(path));
+            return;
+        }
+
+        // try each unused element
+        for (int i = 0; i < nums.length; i++) {
+            if (visited[i]) continue;
+
+            visited[i] = true;
+            path.add(nums[i]);
+
+            generate(nums, path, visited, output);
+
+            // backtrack
+            path.remove(path.size() - 1);
+            visited[i] = false;
+        }
+    }
+}
