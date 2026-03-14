@@ -1,0 +1,26 @@
+class Solution {
+    public String getHappyString(int n, int k) {
+        String cur="";
+
+        List<String> ans = new ArrayList<>();
+
+        solve(n,cur,ans);
+        if(ans.size()<k){
+            return "";
+        }
+        return ans.get(k-1);
+    }
+    void solve(int n, String cur,List<String> ans){
+        if(cur.length()==n){
+            ans.add(cur);
+            return;
+        }
+        for(char ch='a'; ch<='c'; ch++){
+            if (cur.length() > 0 && cur.charAt(cur.length() - 1) == ch) {
+                continue;
+            }
+
+            solve(n, cur + ch, ans);
+        }
+    }
+}
