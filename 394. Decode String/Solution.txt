@@ -1,0 +1,38 @@
+class Solution {
+    public String decodeString(String s) {
+        Stack<String> strStack = new Stack<>();
+        Stack<Integer> countStack = new Stack<>();
+
+        String chartillNow="";
+        int count=0; 
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+
+            if(Character.isDigit(ch)){
+                count = count * 10 +(ch - '0');   
+            }
+            else if(ch == '['){
+                strStack.push(chartillNow);
+                countStack.push(count);
+
+                //Reset
+                count=0; 
+                chartillNow="";
+            }
+            else if(ch == ']'){
+                int times = countStack.pop();
+                String temp="";
+                for(int j=0; j<times; j++){
+                    temp +=chartillNow;
+                }
+
+                String prevStr=strStack.pop();
+                chartillNow = prevStr+temp;
+            }
+            else{
+                chartillNow += ch;
+            }
+        }
+        return chartillNow;
+    }
+}
